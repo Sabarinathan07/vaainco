@@ -51,34 +51,33 @@ class _MyVerifyState extends State<MyVerify> {
         elevation: 0,
       ),
       body: Container(
-        margin: EdgeInsets.only(left: 25, right: 25),
-        alignment: Alignment.center,
+        margin: const EdgeInsets.only(left: 25, right: 25),
+        alignment: Alignment.topLeft,
         child: SingleChildScrollView(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Image.asset(
-                'assets/img1.png',
-                width: 150,
-                height: 150,
-              ),
-              SizedBox(
-                height: 25,
+
+              const Text(
+                "OTP",
+                style: TextStyle(fontSize: 42, fontWeight: FontWeight.bold),
               ),
               Text(
-                "Phone Verification",
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                "Verification",
+                style: TextStyle(fontSize: 42, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(
+                height: 25,
+              ),
+
+              Text(
+                "OTP has been sent to your number",
+                style: TextStyle(fontSize: 15),
               ),
               SizedBox(
                 height: 10,
               ),
-              Text(
-                "We need to register your phone without getting started!",
-                style: TextStyle(
-                  fontSize: 16,
-                ),
-                textAlign: TextAlign.center,
-              ),
+
               SizedBox(
                 height: 30,
               ),
@@ -94,18 +93,24 @@ class _MyVerifyState extends State<MyVerify> {
               SizedBox(
                 height: 20,
               ),
+              // SizedBox(
+              //   width: double.infinity,
+              //   height: 45,
+              //   child: ElevatedButton(
+              //       style: ElevatedButton.styleFrom(
+              //           primary: Colors.green.shade600,
+              //           shape: RoundedRectangleBorder(
+              //               borderRadius: BorderRadius.circular(10))),
+              //       onPressed: () {},
+              //       child: Text("Verify Phone Number")),
+              // ),
               SizedBox(
-                width: double.infinity,
-                height: 45,
-                child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        primary: Colors.green.shade600,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10))),
-                    onPressed: () {},
-                    child: Text("Verify Phone Number")),
+                child: Text(
+                  "00:29",
+                ),
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   TextButton(
                       onPressed: () {
@@ -116,11 +121,16 @@ class _MyVerifyState extends State<MyVerify> {
                         );
                       },
                       child: Text(
-                        "Edit Phone Number ?",
-                        style: TextStyle(color: Colors.black),
+                        "Didn't get it?",
+                        style: TextStyle(color: Colors.black, ),
                       ))
                 ],
-              )
+              ),
+              TextButton(onPressed: (){
+              //  resend otp function
+              }, child: Text(
+                "Send OTP (SMS)"
+              ))
             ],
           ),
         ),
