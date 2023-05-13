@@ -118,7 +118,10 @@ class _MyVerifyState extends State<MyVerify> {
 
                   showCursor: true,
 
-                  onCompleted: (pin) => print(pin),
+                  onCompleted: (pin) => {
+                    Navigator.pushNamed(context, 'bottomNavBar'),
+                    print(pin)},
+
                 ),
                 const SizedBox(
                   height: 20,
