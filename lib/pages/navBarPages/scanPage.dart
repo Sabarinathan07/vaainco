@@ -61,26 +61,44 @@ class _ScanPageState extends State<ScanPage> {
       showDialog(
         context: context,
         builder: (context) {
-          return AlertDialog(
-            title: const Text('Scan Result'),
-            content: Text(code!),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  controller.resumeCamera();
-                  Navigator.pop(context);
-                },
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(vPrimaryColor),
-                  shape: MaterialStateProperty.all<OutlinedBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
+          return Stack(
+            alignment: Alignment.bottomCenter, // align to the bottom center of the screen
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 80.0),                child: Container(
+                  width: double.infinity,  // make the container take up the entire width of the screen
+                  height: 130,
+
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(8.0),
                   ),
-                ),
-                child: const Text(
-                  'ADD',
-                  style: TextStyle(color: Colors.white),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      const Text('Scan Result'),
+                      Text(code!),
+                      ElevatedButton(
+                        onPressed: () {
+                          controller.resumeCamera();
+                          Navigator.pop(context);
+                        },
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(vPrimaryColor),
+                          shape: MaterialStateProperty.all<OutlinedBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8.0),
+                            ),
+                          ),
+                        ),
+                        child: const Text(
+                          'ADD',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+
+                    ],
+                  ),
                 ),
 
               ),
@@ -88,6 +106,8 @@ class _ScanPageState extends State<ScanPage> {
           );
         },
       ).then((value) => controller.resumeCamera());
+
+
     });
   }
 }
