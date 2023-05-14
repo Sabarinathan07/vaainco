@@ -29,7 +29,7 @@ class _MyPhoneState extends State<MyPhone> {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
 
           children: [
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Icon(Icons.grid_view, color: vPrimaryLightColor, size: 44),
@@ -46,7 +46,7 @@ class _MyPhoneState extends State<MyPhone> {
               ],
             ),
             // const SizedBox(height: 20),
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.start,
                children:[
                  Text(
@@ -151,7 +151,7 @@ class _MyPhoneState extends State<MyPhone> {
             ),
 
 
-           const Column(
+           Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
 
