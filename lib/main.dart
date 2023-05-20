@@ -1,4 +1,5 @@
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:my_app/pages/phone.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -7,12 +8,15 @@ import 'package:my_app/pages/bottomNavigation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
-void main() {
+void main() async{
   // Ensure that the app is initialized before running
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
 
   // Show the splash screen while the app is loading
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+
 
 
   runApp(MyApp());

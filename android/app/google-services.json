@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "339476205840",
+    "project_id": "vaainco",
+    "storage_bucket": "vaainco.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:339476205840:android:bc8d6703c2d852d473d595",
+        "android_client_info": {
+          "package_name": "com.example.my_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "339476205840-m3sr923onpi1bht6hoi3mrbp8ijaof2f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEDXTusqS6HMkBR2wSKldTXYAO6YqpjoM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "339476205840-m3sr923onpi1bht6hoi3mrbp8ijaof2f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,5 +1,9 @@
+import 'dart:async';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:my_app/constant.dart';
+import 'package:my_app/pages/phone.dart';
 import 'package:pinput/pinput.dart';
 
 class MyVerify extends StatefulWidget {
@@ -10,6 +14,22 @@ class MyVerify extends StatefulWidget {
 }
 
 class _MyVerifyState extends State<MyVerify> {
+
+  int seconds = 59;
+  late Timer timer;
+
+  @override
+  void initState() {
+    super.initState();
+    timer = Timer.periodic(Duration(seconds: 1), (Timer t) {
+      setState(() {
+        seconds--;
+      });
+    });
+  }
+
+
+  final FirebaseAuth auth = FirebaseAuth.instance;
   @override
   Widget build(BuildContext context) {
     final defaultPinTheme = PinTheme(
@@ -35,6 +55,30 @@ class _MyVerifyState extends State<MyVerify> {
         color: const Color.fromRGBO(234, 239, 243, 1),
       ),
     );
+    var code = "";
+
+
+    void onPinCompleted(String pin) async {
+      code = pin;
+
+      try{
+
+        PhoneAuthCredential credential = PhoneAuthProvider.credential(
+          verificationId: MyPhone.verify,
+          smsCode: code,
+        );
+
+        // Sign the user in (or link) with the credential
+        await auth.signInWithCredential(credential);
+        Navigator.pushNamedAndRemoveUntil(context, 'bottomNavBar', (route) => false);
+
+      }catch(e){
+          print('Wrong OTP');
+      }
+
+
+    }
+
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -110,18 +154,13 @@ class _MyVerifyState extends State<MyVerify> {
                 ),
 
 
+
                 Pinput(
-                  length: 4,
+                  length: 6,
                   defaultPinTheme: defaultPinTheme,
-                  // focusedPinTheme: focusedPinTheme,
                   submittedPinTheme: submittedPinTheme,
-
                   showCursor: true,
-
-                  onCompleted: (pin) => {
-                    Navigator.pushNamed(context, 'bottomNavBar'),
-                    print(pin)},
-
+                  onCompleted: onPinCompleted,
                 ),
                 const SizedBox(
                   height: 20,
@@ -137,16 +176,24 @@ class _MyVerifyState extends State<MyVerify> {
                 //       onPressed: () {},
                 //       child: Text("Verify Phone Number")),
                 // ),
-                const SizedBox(
+                 SizedBox(
+                  // child: Text(
+                  //   "00:29",
+                  //   style: TextStyle(
+                  //     fontSize: 30,
+                  //     color: vPrimaryLightColor,
+                  //
+                  //   ),
+                  //   textAlign: TextAlign.justify,
+                  //
+                  // ),
                   child: Text(
-                    "00:29",
-                    style: TextStyle(
+                    "00:${seconds.toString().padLeft(2, '0')}",
+                    style: const TextStyle(
                       fontSize: 30,
                       color: vPrimaryLightColor,
-
                     ),
                     textAlign: TextAlign.justify,
-
                   ),
                 ),
 
@@ -157,7 +204,12 @@ class _MyVerifyState extends State<MyVerify> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         TextButton(
-                            onPressed: () {
+                            onPressed: ()  {
+
+
+
+
+
                               Navigator.pushNamedAndRemoveUntil(
                                 context,
                                 'phone',
