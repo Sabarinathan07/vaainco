@@ -111,7 +111,7 @@ class _MyPhoneState extends State<MyPhone> {
                           },
                           decoration: const InputDecoration(
                             border: InputBorder.none,
-                            hintText: "Enter phone number1",
+                            hintText: "Enter phone number",
                           ),
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
