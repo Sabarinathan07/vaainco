@@ -60,7 +60,7 @@ class _MyVerifyState extends State<MyVerify> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
 
-                Column(
+                const Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children:[
                     Row(

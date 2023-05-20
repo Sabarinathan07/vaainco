@@ -6,7 +6,6 @@ import 'package:my_app/pages/verify.dart';
 import 'package:my_app/pages/bottomNavigation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:my_app/pages/payment_checkout.dart';
 
 void main() {
   // Ensure that the app is initialized before running
@@ -31,7 +30,6 @@ class MyApp extends StatelessWidget {
         'phone': (context) => MyPhone(),
         'verify': (context) => MyVerify(),
         'bottomNavBar': (context) => MyBottomNavigationBar(),
-        'payment_checkout': (context) => const RazorpayPaymentPage(),
       },
     );
   }
